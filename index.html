@@ -4,9 +4,24 @@
     <title>Random Advice Slip</title>
   </head>
   <body>
-      <h1 style='text-align:center'>Random Advice Slip</h1>
+    <h1 style='text-align:center'>Random Advice Slip</h1>
     <div id="advice-slip" class="advice-slip"></div>
-    
+
+    <script>
+      const apiUrl = 'https://api.adviceslip.com/advice';
+
+      fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+          const adviceSlip = data.slip.advice;
+          const adviceSlipDiv = document.getElementById('advice-slip');
+          adviceSlipDiv.innerHTML = adviceSlip;
+        })
+        .catch(error => console.error(error));
+    </script>
+  </body>
+</html>
+
 <style>
   .advice-slip {
     font-size: 24px;
@@ -20,8 +35,6 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
 </style>
-
-    
     
     
     
